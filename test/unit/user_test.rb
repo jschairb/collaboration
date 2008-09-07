@@ -1,94 +1,101 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
+<<<<<<< HEAD:test/unit/user_test.rb
 class UserTest < ActiveSupport::TestCase
+=======
+describe "User", ActiveSupport::TestCase do
+  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
+  # Then, you can remove it from this and the functional test.
+  include AuthenticatedTestHelper
+>>>>>>> 46588d529ce1170873249f315f8979bc99af50c2:test/unit/user_test.rb
   fixtures :users
 
-  def test_should_create_user
+  it "should create user" do
     assert_difference 'User.count' do
       user = create_user
-      assert !user.new_record?, "#{user.errors.full_messages.to_sentence}"
+      user.new_record?, "#{user.errors.full_messages.to_sentence}".should.not == true
     end
   end
 
-  def test_should_require_login
+  it "should require login" do
     assert_no_difference 'User.count' do
       u = create_user(:login => nil)
-      assert u.errors.on(:login)
+      u.errors.on(:login).should.not == nil
     end
   end
 
-  def test_should_require_password
+  it "should require password" do
     assert_no_difference 'User.count' do
       u = create_user(:password => nil)
-      assert u.errors.on(:password)
+      u.errors.on(:password).should.not == nil
     end
   end
 
-  def test_should_require_password_confirmation
+  it "should require password confirmation" do
     assert_no_difference 'User.count' do
       u = create_user(:password_confirmation => nil)
-      assert u.errors.on(:password_confirmation)
+      u.errors.on(:password_confirmation).should.not == nil
     end
   end
 
-  def test_should_require_email
+  it "should require email" do
     assert_no_difference 'User.count' do
       u = create_user(:email => nil)
-      assert u.errors.on(:email)
+      u.errors.on(:email).should.not == nil
     end
   end
 
-  def test_should_reset_password
+  it "should reset password" do
     users(:quentin).update_attributes(:password => 'new password', :password_confirmation => 'new password')
     assert_equal users(:quentin), User.authenticate('quentin', 'new password')
   end
 
-  def test_should_not_rehash_password
+  it "should not rehash password" do
     users(:quentin).update_attributes(:login => 'quentin2')
     assert_equal users(:quentin), User.authenticate('quentin2', 'monkey')
   end
 
-  def test_should_authenticate_user
+  it "should authenticate user" do
     assert_equal users(:quentin), User.authenticate('quentin', 'monkey')
   end
 
-  def test_should_set_remember_token
+  it "should set remember token" do
     users(:quentin).remember_me
-    assert_not_nil users(:quentin).remember_token
-    assert_not_nil users(:quentin).remember_token_expires_at
+    users(:quentin).remember_token.should.not == nil
+    users(:quentin).remember_token_expires_at.should.not == nil
   end
 
-  def test_should_unset_remember_token
+  it "should unset remember token" do
     users(:quentin).remember_me
-    assert_not_nil users(:quentin).remember_token
+    users(:quentin).remember_token.should.not == nil
     users(:quentin).forget_me
-    assert_nil users(:quentin).remember_token
+    users(:quentin).remember_token.should == nil
   end
 
-  def test_should_remember_me_for_one_week
+  it "should remember me for one week" do
     before = 1.week.from_now.utc
     users(:quentin).remember_me_for 1.week
     after = 1.week.from_now.utc
-    assert_not_nil users(:quentin).remember_token
-    assert_not_nil users(:quentin).remember_token_expires_at
-    assert users(:quentin).remember_token_expires_at.between?(before, after)
+    users(:quentin).remember_token.should.not == nil
+    users(:quentin).remember_token_expires_at.should.not == nil
+    users(:quentin).remember_token_expires_at.between?(before, after).should.not == nil
   end
 
-  def test_should_remember_me_until_one_week
+  it "should remember me until one week" do
     time = 1.week.from_now.utc
     users(:quentin).remember_me_until time
-    assert_not_nil users(:quentin).remember_token
-    assert_not_nil users(:quentin).remember_token_expires_at
-    assert_equal users(:quentin).remember_token_expires_at, time
+    users(:quentin).remember_token.should.not == nil
+    users(:quentin).remember_token_expires_at.should.not == nil
+    time.should == users(:quentin).remember_token_expires_at
   end
 
-  def test_should_remember_me_default_two_weeks
+  it "should remember me default two weeks" do
     before = 2.weeks.from_now.utc
     users(:quentin).remember_me
     after = 2.weeks.from_now.utc
-    assert_not_nil users(:quentin).remember_token
-    assert_not_nil users(:quentin).remember_token_expires_at
-    assert users(:quentin).remember_token_expires_at.between?(before, after)
+    users(:quentin).remember_token.should.not == nil
+    users(:quentin).remember_token_expires_at.should.not == nil
+    users(:quentin).remember_token_expires_at.between?(before, after).should.not == nil
   end
 
 protected
