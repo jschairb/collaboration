@@ -49,6 +49,14 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def join(room)
+    rooms << room unless rooms.include?(room)
+  end
+
+  def still_present(room)
+    pres = presence.find_by_room_id(room.id)
+    pres.touch if pres
+  end
   protected
     
 
