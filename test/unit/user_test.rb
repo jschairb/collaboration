@@ -1,13 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
-<<<<<<< HEAD:test/unit/user_test.rb
-class UserTest < ActiveSupport::TestCase
-=======
 describe "User", ActiveSupport::TestCase do
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
-  # Then, you can remove it from this and the functional test.
-  include AuthenticatedTestHelper
->>>>>>> 46588d529ce1170873249f315f8979bc99af50c2:test/unit/user_test.rb
+
   fixtures :users
 
   it "should create user" do
