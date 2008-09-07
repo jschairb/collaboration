@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class PresenceTest < ActiveSupport::TestCase
+describe "Presence", ActiveSupport::TestCase do
   # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  it "the truth" do
+    true.should.not == nil
   end
 end

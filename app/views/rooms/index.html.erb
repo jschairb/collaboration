@@ -1,18 +1,12 @@
 <h1>Listing rooms</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Subject</th>
-  </tr>
 
 <% for room in @rooms %>
   <tr>
     <td><%=h room.name %></td>
     <td><%=h room.subject %></td>
-    <td><%= link_to 'Show', room %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-    <td><%= link_to 'Destroy', room, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to('Destroy', room, :confirm => 'Are you sure?', :method => :delete) if room.destroyable? %></td>
   </tr>
 <% end %>
 </table>

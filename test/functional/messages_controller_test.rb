@@ -1,18 +1,18 @@
 require 'test_helper'
 
-class MessagesControllerTest < ActionController::TestCase
-  test "should get index" do
+describe "MessagesController", ActionController::TestCase do
+  it "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:messages)
+    assigns(:messages).should.not == nil
   end
 
-  test "should get new" do
+  it "should get new" do
     get :new
     assert_response :success
   end
 
-  test "should create message" do
+  it "should create message" do
     assert_difference('Message.count') do
       post :create, :message => { }
     end
@@ -20,22 +20,22 @@ class MessagesControllerTest < ActionController::TestCase
     assert_redirected_to message_path(assigns(:message))
   end
 
-  test "should show message" do
+  it "should show message" do
     get :show, :id => messages(:one).id
     assert_response :success
   end
 
-  test "should get edit" do
+  it "should get edit" do
     get :edit, :id => messages(:one).id
     assert_response :success
   end
 
-  test "should update message" do
+  it "should update message" do
     put :update, :id => messages(:one).id, :message => { }
     assert_redirected_to message_path(assigns(:message))
   end
 
-  test "should destroy message" do
+  it "should destroy message" do
     assert_difference('Message.count', -1) do
       delete :destroy, :id => messages(:one).id
     end
