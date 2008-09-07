@@ -1,0 +1,14 @@
+<p>You are logged in as <%= h current_user.login %>. <%= link_to "Logout", logout_path %>.</p>
+
+<p>
+  <h3>Rooms</h3>
+  <ul>
+    <% Room.all.each do |room| %>
+      <li><%= link_to h(room.name), room %></li>
+    <% end -%>
+  </ul>
+</p>
+
+<p>
+  <h3>People</h3>
+</p>

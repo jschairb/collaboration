@@ -11,10 +11,13 @@
       <div id="header"><%= link_to "Collaboratuer", "/" %></div>
       <div id="container">
         <div id="content">
+          <%= flash[:notice] %>
           <%= @content_for_layout %>
         </div>
-        <div id="content_footer"></div>
-      </div><!-- end of container-->
+        <div id="sidebar"><%= render :partial => 'shared/sidebar' %></div>
+        <div class="clear"></div>
+      </div>
+      <div id="footer">Built by Panera Productions</div>
     </div>
   </body>
 </html>

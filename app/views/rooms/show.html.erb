@@ -8,7 +8,7 @@
 <table>
 <% @room.messages.each do |message| -%>
   <tr>
-    <td><%= h message.user %></td>
+    <td><%= h message.user.login %></td>
     <td><%= h message.body %></td>
   </tr>
 <% end -%>

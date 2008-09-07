@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_filter :get_room
+
   # GET /messages
   # GET /messages.xml
   def index
@@ -40,16 +42,17 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.xml
   def create
-    @message = Message.new(params[:message])
+    options = params[:message].merge(:user => current_user)
+    @message = @room.messages.build(options)
 
     respond_to do |format|
       if @message.save
         flash[:notice] = 'Message was successfully created.'
-        format.html { redirect_to(@message) }
-        format.xml  { render :xml => @message, :status => :created, :location => @message }
+        format.html { redirect_to(@room) }
+#        format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+        format.html { render :action => "rooms/show" }
+#        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -81,5 +84,10 @@ class MessagesController < ApplicationController
       format.html { redirect_to(messages_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def get_room
+    @room = Room.find params[:room_id]
   end
 end
