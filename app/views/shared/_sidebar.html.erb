@@ -1,5 +1,6 @@
-<p>You are logged in as <%= h current_user.login %>. <%= link_to "Logout", logout_path %>.</p>
-
+<%- if current_user -%>
+  <p>You are logged in as <%= h current_user.login %>. <%= link_to "Logout", logout_path %>.</p>
+<% end -%>
 <p>
   <h3>Rooms</h3>
   <ul>

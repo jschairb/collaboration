@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
   def create
     options = params[:message].merge(:user => current_user)
     @message = @room.messages.build(options)
-
+    current_user.present @room
     respond_to do |format|
       if @message.save
         flash[:notice] = 'Message was successfully created.'
