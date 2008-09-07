@@ -12,6 +12,6 @@ class Presence < ActiveRecord::Base
   end
 
   def self.expiration_time
-    (Time.now.getutc - 1.minutes).to_s(:db)
+    (Time.now.getutc - 10.minutes).to_s(:db)
   end
 end
