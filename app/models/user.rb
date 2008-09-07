@@ -57,6 +57,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  alias join present
+
   protected
     
 
