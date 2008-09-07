@@ -14,7 +14,9 @@
 <% end -%>
 </table>
 
-<%- form_for [@room, Message.new] do |f| -%>
-  <%= f.text_area :body, :size => '80x5' %>
-  <%= f.submit 'send' %>
+<% if logged_in? -%>
+  <%- form_for [@room, Message.new] do |f| -%>
+    <%= f.text_area :body, :size => '80x5' %>
+    <%= f.submit 'send' %>
+  <% end -%>
 <% end -%>
