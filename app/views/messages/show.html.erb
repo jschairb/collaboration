@@ -1,0 +1,18 @@
+<p>
+  <b>User:</b>
+  <%=h @message.user_id %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%=h @message.room_id %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @message.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_message_path(@message) %> |
+<%= link_to 'Back', messages_path %>

@@ -1,0 +1,22 @@
+<h1>Listing presence</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Room</th>
+  </tr>
+
+<% for presence in @presence %>
+  <tr>
+    <td><%=h presence.user_id %></td>
+    <td><%=h presence.room_id %></td>
+    <td><%= link_to 'Show', presence %></td>
+    <td><%= link_to 'Edit', edit_presence_path(presence) %></td>
+    <td><%= link_to 'Destroy', presence, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New presence', new_presence_path %>

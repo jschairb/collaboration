@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @room.name %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%=h @room.subject %>
+</p>
+
+
+<%= link_to 'Edit', edit_room_path(@room) %> |
+<%= link_to 'Back', rooms_path %>
