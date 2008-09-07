@@ -4,4 +4,5 @@ log/*.log
 db/*.sqlite3
 tmp/
 config/database.yml
+db/schema.rb
 

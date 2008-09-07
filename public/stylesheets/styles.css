@@ -1,0 +1,14 @@
+* { font-size: 12px }
+
+body { background: #D7681F; }
+
+a, a:visited { color: #800000; }
+
+#wrapper { width: 700px; margin: 0 auto; }
+#header, #content, #footer { padding: 1em; }
+#header a { text-decoration: none; font-size: 3em; 
+            font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;}
+#header a:hover { font-style: italic; }
+#content { background: #D3C1B8; 
+           font-family: 'Bookman Old Style', serif; }
+#footer { font-style: italic; }
