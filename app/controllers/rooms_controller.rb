@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_filter :expire_presence
+
   # GET /rooms
   # GET /rooms.xml
   def index
@@ -81,5 +83,10 @@ class RoomsController < ApplicationController
       format.html { redirect_to(rooms_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+  def expire_presence
+    Presence.expire
   end
 end
