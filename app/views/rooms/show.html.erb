@@ -1,13 +1,20 @@
-<p>
-  <b>Name:</b>
+<h1>
   <%=h @room.name %>
-</p>
-
-<p>
-  <b>Subject:</b>
+</h1>
+<h2>
   <%=h @room.subject %>
-</p>
+</h2>
 
+<table>
+<% @room.messages.each do |message| -%>
+  <tr>
+    <td><%= h message.user %></td>
+    <td><%= h message.body %></td>
+  </tr>
+<% end -%>
+</table>
 
-<%= link_to 'Edit', edit_room_path(@room) %> |
-<%= link_to 'Back', rooms_path %>
+<%- form_for [@room, Message.new] do |f| -%>
+  <%= f.text_area :body, :size => '80x5' %>
+  <%= f.submit 'send' %>
+<% end -%>
