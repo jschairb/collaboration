@@ -1,20 +1,17 @@
-<h1>
-  <%=h @room.name %>
-</h1>
-<h2>
-  <%=h @room.subject %>
-</h2>
+<h1><%=h @room.name %></h1>
+<h2><%=h @room.subject %></h2>
 
-<table>
+<ol class="messages">
 <% @room.messages.each do |message| -%>
-  <tr>
-    <td><%= h message.user.login %></td>
-    <td><%= h message.body %></td>
-  </tr>
+  <li class="message<%= cycle(' alt', '') %>">
+    <div class="meta"><%= h message.user.login %> said <%= time_ago_in_words(message.created_at) %> ago:</div>
+    <%= h message.body %>
+  </li>
 <% end -%>
-</table>
+</ol>
 
 <% if logged_in? -%>
+  <%= flash_div :notice %>
   <%- form_for [@room, Message.new] do |f| -%>
     <%= f.text_area :body, :size => '80x5' %>
     <%= f.submit 'send' %>

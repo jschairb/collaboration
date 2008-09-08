@@ -32,9 +32,31 @@ ul.rooms { list-style: none; margin-left: 2.5em; }
 ul.rooms h2 a { font-size: 2em; }
 li.room { font-size: 1.5em; }
 .meta { font-style: italic; margin-left: 1em; color: black; font-weight: normal; }
+
+ol.messages {
+    list-style: none;
+    border-top: 1px solid #800000; 
+    margin: 1em 0;
+}
+li.message { padding: 1em; border: 1px solid #800000; border-top: none; font-size: larger; }
+li.message div.meta { 
+    font-size: smaller;
+    font-style:normal; 
+    font-weight: bold; 
+    margin: 0 0 1em 0;
+    border-bottom: 1px solid #800000;
+}
+li.alt { background: #BFA598; }
 #sidebar { float: right; width: 150px; }
 #sidebar, #sidebar li a { font-size: larger; }
 #sidebar h3 { font-size: 1.5em; }
 #sidebar ul { list-style: none; margin: 0 0 1em 1em; }
 .clear { clear: both; }
 #footer { font-style: italic; }
+
+div.flash { 
+    margin: 1em 0;
+    padding: 1em; 
+    border: 1px solid #800000; 
+    background: #E48445;
+}
