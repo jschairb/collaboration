@@ -1,16 +1,31 @@
-<h1>Listing rooms</h1>
+<h1>Rooms</h1>
 
-<table>
+<ul class="rooms">
+  <% @rooms.each do |room| %>
+    <li class="room">
+      <h2>
+        <%= link_to room.name, room %>
+        <% if room.messages.any? -%>
+          <span class="meta">
+            last message <%= time_ago_in_words room.last_message.created_at %> 
+            ago by <%= h room.last_message.user.login %>
+          </span>
+        <% end -%>
+      </h2>
+      <%=h room.subject %> 
+      <% if room.users.any? -%>
+        <div class="meta">Present: <%= room.users.collect! {|user| h(user.login)}.join(", ") %></div>
+      <% end -%>
+      <% if room.destroyable? -%>
+        <div class="controls">
+          <%= link_to('Destroy', room, :confirm => 'Are you sure?', 
+                                       :method => :delete)  %>
+        </div>
+      <% end -%>
+    </li>
+  <% end %>
+</ul>
 
-<% for room in @rooms %>
-  <tr>
-    <td><%= link_to room.name, room %></td>
-    <td><%=h room.subject %></td>
-    <td><%= link_to('Destroy', room, :confirm => 'Are you sure?', :method => :delete) if room.destroyable? %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New room', new_room_path %>
+<% if logged_in? -%>
+  <%= link_to 'New room', new_room_path %>
+<% end -%>

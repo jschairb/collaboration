@@ -1,18 +1,40 @@
-* { font-size: 12px }
+* { font-size: 10px; margin: 0; padding: 0; }
 
-body { background: #D7681F; }
+body { background: #D7681F; font-family: 'Bookman Old Style', serif;}
 
 a, a:visited { color: #800000; }
 
+h1,h2,h3,h4,h5 { 
+    color: #800000; 
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+h1 { font-size: 3em; margin-bottom: .25em; }
+
 #wrapper { width: 800px; margin: 0 auto; }
 #header, #container, #footer { padding: 1em; }
-#header a { text-decoration: none; font-size: 3em; 
-            font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;}
-#header a:hover { font-style: italic; }
-#container { background: #D3C1B8; 
-           font-family: 'Bookman Old Style', serif; }
+#header { text-align: right; }
+#header a { 
+    text-decoration: none; 
+    font-size: 3em;
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
 
+#header a:hover { font-style: italic; }
+#container { 
+    background: #D3C1B8; 
+
+    border: 1px solid #800000; 
+}
 #content { float: left; width: 600px; }
+
+ul.rooms { list-style: none; margin-left: 2.5em; }
+ul.rooms h2 a { font-size: 2em; }
+li.room { font-size: 1.5em; }
+.meta { font-style: italic; margin-left: 1em; color: black; font-weight: normal; }
 #sidebar { float: right; width: 150px; }
+#sidebar, #sidebar li a { font-size: larger; }
+#sidebar h3 { font-size: 1.5em; }
+#sidebar ul { list-style: none; margin: 0 0 1em 1em; }
 .clear { clear: both; }
 #footer { font-style: italic; }
